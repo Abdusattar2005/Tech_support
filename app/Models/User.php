@@ -12,6 +12,19 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    const ADMIN = 1;
+    const USER = 2;
+    const MANAGER = 3;
+
+    public function getRole(): string
+    {
+        return match ($this->role){
+            self::ADMIN => 'administrator',
+            self::USER => 'user',
+            self::MANAGER => 'manager',
+            default => 'other'
+        };
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +34,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
