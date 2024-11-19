@@ -9,7 +9,7 @@
             <a href="{{route('admin.user.edit', $user->id)}}" class="text-success"><i class="fa fa-pencil"></i></a>
             {{--        <form action="{{route('admin.user.delete', $user->id)}}" method="POST">--}}
             @csrf
-            @method('DELETE')
+
             {{--<i class="fas fa-trash"></i>--}}
             <button type="submit" class="border-0 bg-transparent">
                 <i class="fa fa-trash text-danger" role="button"></i>

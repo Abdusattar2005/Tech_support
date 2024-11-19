@@ -23,8 +23,8 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'required|string|email|unique:users,email,' . $this->user_id,
-            'user_id' => 'required|integer|exists:users,id',
+            'email' => 'required|string|email|unique:user,email,' . $this->user_id,
+            'user_id' => 'required|integer|exists:user,id',
             'role' => 'required|integer'
 
         ];

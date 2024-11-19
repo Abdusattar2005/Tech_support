@@ -9,33 +9,36 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    protected $table = 'users';
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    const ADMIN = 1;
-    const USER = 2;
-    const MANAGER = 3;
+    const ROLE_ADMIN = 0;
+    const ROLE_READER = 1;
 
-    public function getRole(): string
+    public static function getRoles()
     {
-        return match ($this->role){
-            self::ADMIN => 'administrator',
-            self::USER => 'user',
-            self::MANAGER => 'manager',
-            default => 'other'
-        };
+        return [
+            0 => 'Admin',
+            1 => 'Reader',
+        ];
     }
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'role',
+    ];
+
+    protected $guarded = false;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role'
-    ];
+
 
     /**
      * The attributes that should be hidden for serialization.
