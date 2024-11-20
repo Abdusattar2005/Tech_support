@@ -20,33 +20,7 @@
                     </span>
                 </a>
             </li>
-            <li>
-                <a href="#" class= "pages/widgets.html">
-                    <i class="nav-icon fa fa-clipboard"></i>
-                    <span>
-                        Посты
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class= "pages/widgets.html">
-                    <i class="nav-icon fa fa-th"></i>
-                    <span>
-                        Категории
-                    </span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class= "pages/widgets.html">
-                    <i class="nav-icon fa fa-tags"></i>
-                    <span>
-                        Теги
-                    </span>
-                </a>
-            </li>
         </ul>
-
-
     </section>
     <!-- /.sidebar -->
 </aside>

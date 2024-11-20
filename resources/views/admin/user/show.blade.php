@@ -4,21 +4,11 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-
             <h1>{{$user->name}}</h1>
             <a href="{{route('admin.user.edit', $user->id)}}" class="text-success"><i class="fa fa-pencil"></i></a>
-            {{--        <form action="{{route('admin.user.delete', $user->id)}}" method="POST">--}}
-            @csrf
-
-            {{--<i class="fas fa-trash"></i>--}}
-            <button type="submit" class="border-0 bg-transparent">
-                <i class="fa fa-trash text-danger" role="button"></i>
-            </button>
-
-            </form>
             <ol class="breadcrumb">
                 <li><a href="{{route('admin.main.index')}}"><i class="fa fa-home"></i>Главная</a></li>
-                <li class="active">Ползователи</li>
+                <li class="active"><a href="{{route('admin.user.index')}}"><i class="fa fa-users"></i>Ползователи</a></li>
             </ol>
         </section>
 
