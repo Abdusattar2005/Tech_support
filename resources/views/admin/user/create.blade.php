@@ -22,7 +22,7 @@
 
                 <div class="col-lg-5">
                     {{--                {{route('admin.user.store')}}--}}
-                    <form action="" method="POST" class="w-25">
+                    <form action="#" method="POST" class="w-25">
                         @csrf
                         <div class="form-group">
                             <label>Название</label>
