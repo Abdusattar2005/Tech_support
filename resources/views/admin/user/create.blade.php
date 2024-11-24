@@ -20,14 +20,14 @@
             <div class="row">
 
                 <div class="col-lg-5">
-                    {{--                {{route('admin.user.store')}}--}}
-                    <form action="#" method="POST" class="w-25">
+
+                    <form action="{{route('admin.user.store')}}" method="POST" class="w-25">
                         @csrf
                         <div class="form-group">
                             <label>Название</label>
                             <input type="text" class="form-control" name="name" placeholder="Название user">
                             @error('name')
-                            <div class="text-danger">1111111</div>
+                            <div class="text-danger">{{$message}}</div>
 
                             @enderror
                         </div>
@@ -35,7 +35,15 @@
                             <label>Название E-mail</label>
                             <input type="text" class="form-control" name="email" placeholder="E-maile">
                             @error('email')
-                            <div class="text-danger">1111111</div>
+                            <div class="text-danger">{{$message}}</div>
+
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Парол</label>
+                            <input type="text" class="form-control" name="password" placeholder="пароль">
+                            @error('password')
+                            <div class="text-danger">{{$message}}</div>
 
                             @enderror
                         </div>
@@ -49,7 +57,7 @@
                                 @endforeach
                             </select>
                             @error('role')
-                            <div class="text-danger">1111111</div>
+                            <div class="text-danger">{{$message}}</div>
 
                             @enderror
                         </div>

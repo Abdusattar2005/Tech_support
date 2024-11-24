@@ -15,7 +15,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
         Route::get('/', [UserController::class, 'index'])->name('admin.user.index');
         Route::get('/create', [UserController::class, 'create'])->name('admin.user.create');
-        Route::post('/', [UserController::class, 'store'])->name('admin.user.store');
+        Route::post('/store', [UserController::class, 'store'])->name('admin.user.store');
         Route::get('/{user}', [UserController::class, 'show'])->name('admin.user.show');
         Route::get('/{user}/edit', [UserController::class, 'edit'])->name('admin.user.edit');
         Route::patch('/{user}', [UserController::class, 'update'])->name('admin.user.update');
