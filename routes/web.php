@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Main\IndexController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
         Route::get('/{user}/edit', [UserController::class, 'edit'])->name('admin.user.edit');
         Route::patch('/{user}', [UserController::class, 'update'])->name('admin.user.update');
         Route::delete('/{user}', [UserController::class, 'destroy'])->name('admin.user.destroy');
+    });
+    Route::group(['namespace' => 'Category', 'prefix' => 'category'], function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('admin.category.index');
+        Route::get('/create', [CategoryController::class, 'create'])->name('admin.category.create');
+        Route::post('/store', [CategoryController::class, 'store'])->name('admin.category.store');
+        Route::get('/{category}', [CategoryController::class, 'show'])->name('admin.category.show');
+        Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('admin.category.edit');
+        Route::patch('/{category}', [CategoryController::class, 'update'])->name('admin.category.update');
     });
 });
 

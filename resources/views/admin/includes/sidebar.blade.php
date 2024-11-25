@@ -5,7 +5,7 @@
 
         <ul class="sidebar-menu">
             <li>
-                <a href="{{route('admin.main.index')}}" class= "pages/widgets.html">
+                <a href="{{route('admin.main.index')}}">
                     <i class="nav-icon fa fa-home"></i>
                     <span>
                         Главная
@@ -13,10 +13,18 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('admin.user.index')}}" class= "pages/widgets.html">
+                <a href="{{route('admin.user.index')}}">
                     <i class="nav-icon fa fa-users"></i>
                     <span>
                         Пользователи
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin.category.index')}}" >
+                    <i class="nav-icon fa fa-th"></i>
+                    <span>
+                        Категории
                     </span>
                 </a>
             </li>
