@@ -42,9 +42,20 @@
                                 @foreach($categories as $category)
                                     <tr>
                                         <td>{{$category->id}}</td>
-                                        <td>{{$category->title}}</td>
+                                        <td>{{$category->name}}</td>
                                         <td class="text-center"><a href="{{route('admin.category.show', $category->id)}}"><i class="fa fa-eye"></i></a></td>
                                         <td class="text-center"><a href="{{route('admin.category.edit', $category->id)}}" class="text-success"><i class="fa fa-pencil"></i></a></td>
+                                        <td class="text-center">
+                                            <form action="{{route('admin.category.delete', $category->id)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                {{--<i class="fas fa-trash"></i>--}}
+                                                <button type="submit" class="border-0 bg-transparent">
+                                                    <i class="fa fa-trash text-danger" role="button"></i>
+                                                </button>
+
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

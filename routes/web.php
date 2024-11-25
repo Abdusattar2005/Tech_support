@@ -20,7 +20,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
         Route::get('/{user}', [UserController::class, 'show'])->name('admin.user.show');
         Route::get('/{user}/edit', [UserController::class, 'edit'])->name('admin.user.edit');
         Route::patch('/{user}', [UserController::class, 'update'])->name('admin.user.update');
-        Route::delete('/{user}', [UserController::class, 'destroy'])->name('admin.user.destroy');
+        Route::delete('/{user}', [UserController::class, 'delete'])->name('admin.user.delete');
     });
     Route::group(['namespace' => 'Category', 'prefix' => 'category'], function () {
         Route::get('/', [CategoryController::class, 'index'])->name('admin.category.index');
@@ -29,6 +29,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
         Route::get('/{category}', [CategoryController::class, 'show'])->name('admin.category.show');
         Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('admin.category.edit');
         Route::patch('/{category}', [CategoryController::class, 'update'])->name('admin.category.update');
+        Route::delete('/{category}', [CategoryController::class, 'delete'])->name('admin.category.delete');
+
     });
 });
 

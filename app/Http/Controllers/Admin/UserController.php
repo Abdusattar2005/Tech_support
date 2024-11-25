@@ -25,7 +25,7 @@ class UserController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:8',
+            'password' => 'required|string|max:8',
         ]);
 
         User::create($data);
@@ -56,10 +56,10 @@ class UserController extends Controller
         $user->update(array_filter($data));
         return redirect()->route('admin.user.index')->with('success', 'User updated successfully.');
     }
-
-    public function destroy(User $user)
+    public function delete( User $user)
     {
         $user->delete();
-        return redirect()->route('admin.user.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('admin.user.index');
     }
+
 }

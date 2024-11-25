@@ -22,8 +22,11 @@ class CategoryController extends Controller
 
     public function store(StoreRequest $request)
     {
-        $data = $request->validated();
-        return redirect()->route('admin.category.index', compact('data'));
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+        Category::firstOrCreate($data);
+        return redirect()->route('admin.category.index');
     }
 
     public function show(Category $category)
@@ -42,6 +45,11 @@ class CategoryController extends Controller
         $data=$request->validated();
         $category->update($data);
         return view('admin.category.show', compact('category'));
+    }
+    public function delete( Category $category)
+    {
+        $category->delete();
+        return redirect()->route('admin.category.index');
     }
 
 }

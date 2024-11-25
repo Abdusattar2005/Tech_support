@@ -35,7 +35,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Название</th>
-                                    <th colspan="3" class="text-center">Дуйствия</th>
+                                    <th colspan="2" class="text-center">Дуйствия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -49,7 +49,15 @@
                                                                    class="text-success"><i class="fa fa-pencil"></i></a>
                                         </td>
                                         <td class="text-center">
+                                            <form action="{{route('admin.user.delete', $user->id)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                {{--<i class="fas fa-trash"></i>--}}
+                                                <button type="submit" class="border-0 bg-transparent">
+                                                    <i class="fa fa-trash text-danger" role="button"></i>
+                                                </button>
 
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
