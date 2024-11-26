@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Main\IndexController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\VideoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
         Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('admin.category.edit');
         Route::patch('/{category}', [CategoryController::class, 'update'])->name('admin.category.update');
         Route::delete('/{category}', [CategoryController::class, 'delete'])->name('admin.category.delete');
-
+    });
+    Route::group(['namespace' =>'Video' , 'prefix' => 'videos'], function () {
+        Route::get('/', [VideoController::class, 'index'])->name('main.video');
     });
 });
 

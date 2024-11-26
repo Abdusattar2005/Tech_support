@@ -28,6 +28,14 @@
                     </span>
                 </a>
             </li>
+            <li>
+                <a href="{{route('main.video')}}">
+                    <i class="nav-icon fa fa-video-camera"></i>
+                    <span>
+                        Видео
+                    </span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->
