@@ -11,6 +11,14 @@ Route::group(['namespace' => 'Main'], function () {
     Route::get('/', [\App\Http\Controllers\Main\IndexController::class, 'index'])->name('main.index');
 });
 
+Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {
+    Route::get('/', [\App\Http\Controllers\Category\IndexController::class, 'index'])->name('category.index');
+
+    Route::group(['namespace' => 'Post','prefix'=> '{category}/posts'], function () {
+        Route::get('/', [\App\Http\Controllers\Category\Post\IndexController::class, 'index'])->name('category.post.index');
+    });
+});
+
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth',  'verified']], function () {
     Route::get('/', [IndexController::class, 'index'])->name('admin.main.index');
 
@@ -33,7 +41,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
         Route::delete('/{category}', [CategoryController::class, 'delete'])->name('admin.category.delete');
     });
     Route::group(['namespace' =>'Video' , 'prefix' => 'videos'], function () {
-        Route::get('/', [VideoController::class, 'index'])->name('main.video');
+        Route::get('/create', [VideoController::class, 'create'])->name('admin.video.create');
+        Route::post('/', [VideoController::class, 'store'])->name('admin.video.store');
+        Route::get('/', [VideoController::class, 'index'])->name('admin.video.index');
+        Route::get('/{video}', [VideoController::class, 'show'])->name('admin.video.show');
+        Route::get('/{video}/edit', [VideoController::class, 'edit'])->name('admin.video.edit');
+        Route::patch('/{video}', [VideoController::class, 'update'])->name('admin.video.update');
+        Route::delete('/{video}', [VideoController::class, 'delete'])->name('admin.video.delete');
+
     });
 });
 

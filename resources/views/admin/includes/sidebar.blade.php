@@ -29,7 +29,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('main.video')}}">
+                <a href="{{route('admin.video.index')}}">
                     <i class="nav-icon fa fa-video-camera"></i>
                     <span>
                         Видео

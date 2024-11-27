@@ -13,4 +13,5 @@ class Video extends Model
     use SoftDeletes;
     protected $table = 'videos';
     protected $guarded = false;
+
 }
