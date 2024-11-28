@@ -4,10 +4,10 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>{{$post->title}}</h1>
-        <a href="{{route('admin2.post.edit', $post->id)}}" class="text-success"><i class="fa fa-pencil"></i></a>
+        <h1>{{$video->title}}</h1>
+        <a href="{{route('admin.video.edit', $video->id)}}" class="text-success"><i class="fa fa-pencil"></i></a>
 
-        <form action="{{route('admin2.post.delete', $post->id)}}" method="POST">
+        <form action="{{route('admin.video.delete', $video->id)}}" method="POST">
             @csrf
             @method('DELETE')
 
@@ -17,7 +17,7 @@
 
         </form>
         <ol class="breadcrumb">
-            <li><a href="{{route('admin2.main.index')}}"><i class="fa fa-home"></i>Главная</a></li>
+            <li><a href="{{route('admin.main.index')}}"><i class="fa fa-home"></i>Главная</a></li>
             <li class="active">Ползователи</li>
         </ol>
     </section>
@@ -38,11 +38,11 @@
                                 <tbody>
                                     <tr>
                                         <td>ID</td>
-                                        <td>{{$post->id}}</td>
+                                        <td>{{$video->id}}</td>
                                     </tr>
                                     <tr>
                                         <td>Название</td>
-                                        <td>{{$post->title}}</td>
+                                        <td>{{$video->title}}</td>
                                     </tr>
                                 </tbody>
                             </table>

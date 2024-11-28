@@ -24,8 +24,8 @@ class VideoController extends Controller
     }
     public function edit(Video $video)
     {
-        $videos = Video::all();
-        return view('admin.video.edit', compact('videos', 'video'));
+        $categories = Category::all();
+        return view('admin.video.edit', compact( 'video','categories'));
     }
     public function show(Video $video)
     {
