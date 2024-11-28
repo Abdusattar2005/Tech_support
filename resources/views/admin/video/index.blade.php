@@ -26,22 +26,22 @@
             <div class="col-lg-6 ">
 
 
-                    <div class="box">
+                    <div class="box ">
                         <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
+                            <table class="table table-hover ">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Название</th>
-                                    <th colspan="3" class="text-center">Дуйствия</th>
+                                    <th class="bg-red">ID</th>
+                                    <th class="bg-aqua">Название</th>
+                                    <th colspan="3" class="text-center bg-red-gradient">Дуйствия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($videos as $video)
-                                    <tr>
-                                        <td>{{$video->id}}</td>
+                                    <tr class="bg-yellow-gradient">
+                                        <td class="bg-blue-gradient">{{$video->id}}</td>
                                         <td>{{$video->title}}</td>
-                                        <td class="text-center"><a href="{{route('admin.video.show', $video->id)}}"><i class="fa fa-eye"></i></a></td>
+                                        <td class="text-center"><a href="{{route('admin.video.show', $video->id)}}"><i class="fa fa-eye "></i></a></td>
                                         <td class="text-center"><a href="{{route('admin.video.edit', $video->id)}}" class="text-success"><i class="fa fa-pencil"></i></a></td>
                                         <td class="text-center">
                                             <form action="{{route('admin.video.delete', $video->id)}}" method="POST">
@@ -49,7 +49,7 @@
                                                 @method('DELETE')
                                                 {{--<i class="fas fa-trash"></i>--}}
                                                 <button type="submit" class="border-0 bg-transparent">
-                                                    <i class="fa fa-trash text-danger" role="button"></i>
+                                                    <i class="fa fa-trash  text-danger"  role="button"></i>
                                                 </button>
 
                                             </form>

@@ -48,14 +48,13 @@
                         @error('preview_video')
                         <div class="text-danger">Это поля необходимо для заполнения</div>
                         @enderror
-
                         <div class="form-group">
                             <label>Выберите категорию</label>
-                            <select name="category-id" class="form-control" disabled="">
+                            <select name="category-id" class="form-control">
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}"
                                         {{$category->id == $video->category_id ? 'selected' : ''}}
-                                    >{{$category->title}}</option>
+                                    >{{$category->name}}</option>
                                 @endforeach
                             </select>
                         </div>
