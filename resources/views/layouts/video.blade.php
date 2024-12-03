@@ -17,7 +17,7 @@
 <header class="edica-header">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <h1 class="edica-page-title" data-aos="fade-up"><i class="fa fa-video"></i></h1>
+            <h1 class="edica-page-title" data-aos="fade-up"><img src="assets/images/current-channel-logo@1x.png"></h1>
 
             <div class="collapse navbar-collapse" id="edicaMainNav">
                 <ul class="navbar-nav mx-auto mt-2 mt-lg-0">

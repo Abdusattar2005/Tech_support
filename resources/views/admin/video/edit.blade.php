@@ -33,7 +33,10 @@
                         <div class="form-group">
                             <label for="exampleInputFile">Добавим 1</label>
                             <div class="w-25">
-                                <img src="{{'storage/' . $video->preview_video}}" alt="preview_video" class="w-25">
+                                <video class="w-25" width="240px" height="300px" controls>
+                                    <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
+                                    Ваш браузер не поддерживает воспроизведение видео.
+                                </video>
                             </div>
                             <div class="input-group">
                                 <div class="custom-file">

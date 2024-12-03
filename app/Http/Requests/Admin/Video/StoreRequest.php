@@ -23,10 +23,8 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'path' => 'nullable|file',
-            'preview_video' => 'required|file',
+            'preview_video' => 'required',
             'category_id' => 'nullable|integer',
-
         ];
     }
 }

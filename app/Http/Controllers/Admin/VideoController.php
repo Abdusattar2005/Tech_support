@@ -34,7 +34,8 @@ class VideoController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        $data['preview_video'] = Storage::put('/videos', $data['preview_video']);
+        $data['path'] = Storage::disk('public')->put('/videos', $data['preview_video']);
+        unset($data['preview_video']);
         Video::firstOrCreate($data);
 
         return redirect()->route('admin.video.index');

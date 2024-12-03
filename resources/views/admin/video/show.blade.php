@@ -46,19 +46,23 @@
                                     </tr>
                                 </tbody>
                             </table>
+
                         </div>
+
                         <!-- /.box-body -->
                     </div>
+                <div class="w-25">
+                    <video class="w-25" width="240px" height="300px" controls>
+                        <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
+                        Ваш браузер не поддерживает воспроизведение видео.
+                    </video>
+                </div>
                     <!-- /.box -->
 
             </div>
 
         </div>
-        <!-- /.row -->
-
-
-
-    </section>
+ </section>
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->

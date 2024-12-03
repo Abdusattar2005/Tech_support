@@ -22,7 +22,9 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string'
+            'title' => 'required|string',
+            'preview_video' => 'required|file',
+            'category_id' => 'nullable|integer',
         ];
     }
 }

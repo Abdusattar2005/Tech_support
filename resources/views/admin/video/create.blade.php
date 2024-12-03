@@ -50,14 +50,14 @@
                         @enderror
                         <div class="form-group w-50">
                             <label>Выберите категорию</label>
-                            <select name="category-id" class="form-control">
+                            <select class="form-control" name="category_id">
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}"
                                         {{$category->id == old('$category_id')? 'selected' : ''}}
                                     >{{$category->name}}</option>
                                 @endforeach
                             </select>
-                            @error('category-id')
+                            @error('category_id')
                             <div class="text-danger">{{$message}}</div>
 
                             @enderror

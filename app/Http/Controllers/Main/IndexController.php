@@ -10,4 +10,8 @@ class IndexController extends Controller
     {
        return view('main.index');
     }
+    public function video()
+    {
+       return view('main.video');
+    }
 }
