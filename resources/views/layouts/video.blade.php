@@ -28,10 +28,10 @@
                         <a class="nav-link" href="{{route('admin.user.index')}}"><i class="fa fa-users"></i></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
+                        <a class="nav-link dropdown-toggle" href="" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Выйти</a>
                         <div class="dropdown-menu" aria-labelledby="blogDropdown">
-                            <a class="dropdown-item" href="blog.html">Blog Archive</a>
-                            <a class="dropdown-item" href="blog-single.html">Blog Post</a>
+                            <a class="dropdown-item" href="{{route('main.video')}}">Выйти на видео</a>
+                            <a class="dropdown-item" href="{{route('main.index')}}">Выйти на главную</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

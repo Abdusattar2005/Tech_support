@@ -1,19 +1,24 @@
 <?php
 
-use App\Http\Controllers\Admin\Main\IndexController;
+use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\Video\VideooController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Main'], function () {
-    Route::get('/', [\App\Http\Controllers\Main\IndexController::class, 'index'])->name('main.index');
-    Route::get('/video', [\App\Http\Controllers\Main\IndexController::class, 'video'])->name('main.video');
+    Route::get('/', [IndexController::class, 'index'])->name('main.index');
+});
+
+Route::group(['namespace' => 'Video', 'prefix' => 'videos'], function () {
+    Route::get('/', [VideooController::class, 'video'])->name('main.video');
+    Route::get('/{video}', [VideooController::class, 'show'])->name('main.show');
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth',  'verified']], function () {
-    Route::get('/', [IndexController::class, 'index'])->name('admin.main.index');
+    Route::get('/', [\App\Http\Controllers\Admin\Main\IndexController::class, 'index'])->name('admin.main.index');
 
     Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
         Route::get('/', [UserController::class, 'index'])->name('admin.user.index');
