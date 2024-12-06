@@ -19,7 +19,7 @@
                             @csrf
                             <spam{{$video->liked_users_count}}></spam>
                             <button type="submit" class="border-0 bg-transparent">
-                                <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart"></i>
+                                <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
 
                             </button>
                         </form>
@@ -50,7 +50,7 @@
             </section>
             @if($relatedVideos->count() > 0)
                 <section class="related-posts">
-                    <h2 class="section-title mb-4" data-aos="fade-up">Схожие посты</h2>
+                    <h2 class="section-title mb-4" data-aos="fade-up">Окшош видеолор</h2>
                     <div class="row">
                         @foreach($relatedVideos as $relatedVideo)
                             <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">

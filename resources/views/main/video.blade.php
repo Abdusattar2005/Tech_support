@@ -22,7 +22,7 @@
                             @csrf
                             <button type="submit" class="border-0 bg-transparent">
                                 @auth()
-                                        <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart"></i>
+                                        <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
                                 @endauth
                             </button>
                         </form>
@@ -58,7 +58,7 @@
                                     @csrf
                                     <spam{{$video->liked_users_count}}></spam>
                                     <button type="submit" class="border-0 bg-transparent">
-                                            <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart"></i>
+                                            <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
 
                                     </button>
                                 </form>
