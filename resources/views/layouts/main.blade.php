@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edica :: Home</title>
+    <title>Edica :: Главная</title>
     <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/vendors/font-awesome/css/all.min.css">
     <link href="assets/vendors/aos/aos.css" rel="stylesheet">
@@ -38,6 +38,15 @@
                             <a class="dropdown-item" href="{{route('main.video')}}"><i class="fa fa-video">  </i>    Личные видео</a>
                             <a class="dropdown-item" href="blog-single.html"><i class="fa fa-video">  </i>    Видеолор</a>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        @auth()
+                            <a class="nav-link" href="{{route('personal.main.index')}}">Личный кабинет</a>
+
+                        @endauth
+                        @guest()
+                            <a class="nav-link" href="{{route('personal.main.index')}}">Войти</a>
+                        @endguest
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>

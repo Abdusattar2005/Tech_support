@@ -21,8 +21,12 @@
 
             <div class="collapse navbar-collapse" id="edicaMainNav">
                 <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{route('admin.main.index')}}"><i class="fa fa-home"></i> </a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="blogDropdown">
+                            <a class="dropdown-item" href="{{route('admin.main.index')}}">Выйти на админ</a>
+                            <a class="dropdown-item" href="{{route('personal.main.index')}}">Выйти на адми 2</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('admin.user.index')}}"><i class="fa fa-users"></i></a>
@@ -34,12 +38,17 @@
                             <a class="dropdown-item" href="{{route('main.index')}}">Выйти на главную</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                            <a class="dropdown-item" href="404.html">404</a>
-                            <a class="dropdown-item" href="coming-soon.html">Coming Soon</a>
-                        </div>
+                    <li class="nav-item">
+                        @auth()
+                            <a class="nav-link" href="{{route('personal.main.index')}}">Личный кабинет</a>
+
+                        @endauth
+                        @guest()
+                            <a class="nav-link" href="{{route('personal.main.index')}}">Войти</a>
+                        @endguest
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('category.index')}}">Категории</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>

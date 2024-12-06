@@ -4,6 +4,10 @@ use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\Personal\Comment\CommentController;
+use App\Http\Controllers\Personal\Like\LikeController;
+use App\Http\Controllers\Personal\PersonalController;
+use App\Http\Controllers\Video\Comment\StoreController;
 use App\Http\Controllers\Video\VideooController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +19,40 @@ Route::group(['namespace' => 'Main'], function () {
 Route::group(['namespace' => 'Video', 'prefix' => 'videos'], function () {
     Route::get('/', [VideooController::class, 'video'])->name('main.video');
     Route::get('/{video}', [VideooController::class, 'show'])->name('main.show');
+
+    Route::group(['namespace' => 'Comment', 'prefix' => '{video}/comments'], function () {
+        Route::post('/', [StoreController::class, 'store'])->name('video.comment.store');
+
+    });
+    Route::group(['namespace' => 'Like', 'prefix' => '{video}/likes'], function () {
+        Route::post('/', [\App\Http\Controllers\Video\Like\StoreController::class, 'store'])->name('video.like.store');
+    });
+});
+
+Route::group(['namespace' => 'Category', 'prefix'=>'categories'], function () {
+    Route::get('/', [\App\Http\Controllers\Category\IndexController::class, 'index'])->name('category.index');
+
+    Route::group(['namespace' => 'Post','prefix'=> '{category}/posts'], function () {
+        Route::get('/', [\App\Http\Controllers\Category\Post\IndexController::class, 'index'])->name('category.post.index');
+    });
+});
+
+Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth',  'verified']], function () {
+        Route::get('/', [PersonalController::class, 'index'])->name('personal.main.index');
+
+    Route::group(['namespace' => 'Like','prefix'=> 'like'], function () {
+        Route::get('/', [LikeController::class, 'index'])->name('personal.liked.index');
+        Route::delete('/{post}', [LikeController::class, 'delete'])->name('personal.liked.delete');
+
+    });
+
+    Route::group(['namespace' => 'Comment','prefix'=> 'comment'], function () {
+        Route::get('/', [CommentController::class, 'index'])->name('personal.comment.index');
+        Route::get('/{comment}/edit', [CommentController::class, 'edit'])->name('admin2.comment.edit');
+        Route::patch('/{comment}', [CommentController::class, 'update'])->name('admin2.comment.update');
+        Route::delete('/{comment}', [CommentController::class, 'delete'])->name('admin2.comment.delete');
+
+    });
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth',  'verified']], function () {
@@ -29,7 +67,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
         Route::patch('/{user}', [UserController::class, 'update'])->name('admin.user.update');
         Route::delete('/{user}', [UserController::class, 'delete'])->name('admin.user.delete');
     });
-    Route::group(['namespace' => 'Category', 'prefix' => 'category'], function () {
+    Route::group(['namespace' => 'category', 'prefix' => 'category'], function () {
         Route::get('/', [CategoryController::class, 'index'])->name('admin.category.index');
         Route::get('/create', [CategoryController::class, 'create'])->name('admin.category.create');
         Route::post('/store', [CategoryController::class, 'store'])->name('admin.category.store');

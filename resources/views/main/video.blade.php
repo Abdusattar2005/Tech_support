@@ -16,12 +16,27 @@
                             </video>
                         </div>
                     </div>
-                    <p class="blog-post-category">Blog post</p>
+                    <div class="d-flex justify-content-between">
+                        <p class="blog-post-category">{{$video->category->name}}</p>
+                        <form action="{{route('video.like.store', $video->id)}}" method="post">
+                            @csrf
+                            <button type="submit" class="border-0 bg-transparent">
+                                @auth()
+                                        <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart"></i>
+                                @endauth
+                            </button>
+                        </form>
+                    </div>
                     <a href="{{route('main.show', $video->id)}}" class="blog-post-permalink">
                         <h6 class="blog-post-title">{{$video->title}}</h6>
                     </a>
                 </div>
                     @endforeach
+            </div>
+            <div class="row">
+                <div class="mx-auto" style="margin-top: -80px;">
+                    {{$videos->links()}}
+                </div>
             </div>
         </section>
         <div class="row">
@@ -34,8 +49,28 @@
                                 <video width="240px" height="300px" controls>
                                     <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
                                     Ваш браузер не поддерживает воспроизведение видео.
-                                </video>                            </div>
-                            <p class="blog-post-category">Videos</p>
+                                </video>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p class="blog-post-category">{{$video->category->name}}</p>
+                                @auth()
+                                <form action="{{route('video.like.store', $video->id)}}" method="post">
+                                    @csrf
+                                    <spam{{$video->liked_users_count}}></spam>
+                                    <button type="submit" class="border-0 bg-transparent">
+                                            <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart"></i>
+
+                                    </button>
+                                </form>
+                                @endauth
+                                @guest()
+                                    <div>
+                                        <span>{{$post->liked_users_count}}</span>
+                                        <i class="far fa-heart"></i>
+                                    </div>
+
+                                @endguest
+                            </div>
                             <a href="{{route('main.show', $video->id)}}" class="blog-post-permalink">
                                 <h6 class="blog-post-title">{{$video->title}}</h6>
                             </a>
@@ -48,9 +83,10 @@
                 <div class="widget widget-post-list">
                     <h5 class="widget-title">Лутшие видео</h5>
                     <ul class="post-list">
+                        @foreach($LikedVideos as $video)
                         <li class="post">
-                            <a href="#!" class="post-permalink media">
-                                <video width="140px" height="200px" controls>
+                            <a href="{{route('main.show', $video->id)}}" class="post-permalink media">
+                                <video width="150" height="120px" controls>
                                     <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
                                     Ваш браузер не поддерживает воспроизведение видео.
                                 </video>
@@ -59,6 +95,7 @@
                                 </div>
                             </a>
                         </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="widget">

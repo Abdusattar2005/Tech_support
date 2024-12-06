@@ -14,4 +14,18 @@ class Video extends Model
     protected $table = 'videos';
     protected $guarded = false;
 
+    protected $withCount= ['likedUsers'];
+    public function category(){
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function LikedUsers(){
+        return $this->belongsToMany(User::class, 'video_user_likes', 'video_id', 'user_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'video_id', 'id');
+    }
+
 }
