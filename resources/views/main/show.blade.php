@@ -26,7 +26,7 @@
                     @endauth
                     @guest()
                         <div>
-                            <span>{{$post->liked_users_count}}</span>
+                            <span>{{$video->liked_users_count}}</span>
                             <i class="far fa-heart"></i>
                         </div>
 
@@ -47,7 +47,7 @@
 
                     <div class="d-flex justify-content-between">
                         {{$comment->message}}
-                        <form action="{{route('video.like.store', $video->id)}}" method="post">
+                        <form action="{{route('video.comment.store', $video->id)}}" method="post">
                             @csrf
                             <button type="submit" class="border-0 bg-transparent">
                                 @auth()

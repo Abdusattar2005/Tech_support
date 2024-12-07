@@ -21,27 +21,23 @@
 <header class="edica-header">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <h1 class="edica-page-title" data-aos="fade-up"><img src="assets/images/current-channel-logo@1x.png"></h1>
+            <h1 class="edica-page-title" data-aos="fade-up"></h1>
 
             <div class="collapse navbar-collapse" id="edicaMainNav">
                 <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home"></i></a>
                         <div class="dropdown-menu" aria-labelledby="blogDropdown">
-                            <a class="dropdown-item" href="{{route('admin.main.index')}}">Выйти на админ</a>
-                            <a class="dropdown-item" href="{{route('personal.main.index')}}">Выйти на адми 2</a>
+                            <a class="dropdown-item" href="{{route('admin.main.index')}}">1 Выйти на админ</a>
+                            <a class="dropdown-item" href="{{route('personal.main.index')}}">2 Выйти на адми 2</a>
+                            <a class="dropdown-item" href="{{route('main.video')}}">3 Выйти на видео</a>
+                            <a class="dropdown-item" href="{{route('main.index')}}">4 Выйти на главную</a>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('admin.user.index')}}"><i class="fa fa-users"></i></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Выйти</a>
-                        <div class="dropdown-menu" aria-labelledby="blogDropdown">
-                            <a class="dropdown-item" href="{{route('main.video')}}">Выйти на видео</a>
-                            <a class="dropdown-item" href="{{route('main.index')}}">Выйти на главную</a>
-                        </div>
-                    </li>
+
                     <li class="nav-item">
                         @auth()
                             <a class="nav-link" href="{{route('personal.main.index')}}">Личный кабинет</a>
@@ -56,14 +52,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><span class="flag-icon flag-icon-squared rounded-circle flag-icon-gb"></span> Eng</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Download</a>
                     </li>
                 </ul>
             </div>
