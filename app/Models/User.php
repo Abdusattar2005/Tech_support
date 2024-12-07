@@ -4,7 +4,6 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -62,4 +61,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function LikedVideos()
+    {
+        return $this->belongsToMany(Video::class, 'video_user_likes', 'user_id', 'video_id');
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class , 'user_id', 'id');
+    }
+
 }

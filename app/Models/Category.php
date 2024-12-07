@@ -13,4 +13,9 @@ class Category extends Model
     use SoftDeletes;
     protected $table = 'categories';
     protected $guarded = false;
+
+    public  function videos()
+    {
+        return $this->hasMany(Video::class, 'category_id', 'id');
+    }
 }

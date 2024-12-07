@@ -42,7 +42,7 @@
                                 @foreach($users as $user)
                                     <tr>
                                         <td>{{$user->id}}</td>
-                                        <td><a href="{{route('main.index', $user->id)}}">{{$user->name}}</a></td>
+                                        <td><a href="{{route('main.video', $user->id)}}">{{$user->name}}</a></td>
                                         <td class="text-center"><a href="{{route('admin.user.show', $user->id)}}"><i
                                                     class="fa fa-eye"></i></a></td>
                                         <td class="text-center"><a href="{{route('admin.user.edit', $user->id)}}"

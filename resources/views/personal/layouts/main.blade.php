@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Abu|Abu</title>
+    <title>AdminLTE 2 | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{asset('plugins/iCheck/flat/blue.css')}}">
     <!-- Morris chart -->
     <link rel="stylesheet" href="{{asset('plugins/morris/morris.css')}}">
+    <link rel="stylesheet" href="{{asset('summer/summernote.css')}}">
     <!-- jvectormap -->
     <link rel="stylesheet" href="{{asset('plugins/jvectormap/jquery-jvectormap-1.2.2.css')}}">
     <!-- Date Picker -->
@@ -48,19 +49,30 @@
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
             <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"></a>
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <ul class="navbar-nav" >
+                <li class="nav-item">
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <input class="btn btn-outline-primary" type="submit" value="Выйти">
+                    </form>
+                </li>
+
+            </ul>
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
 
-     @include('admin.includes.sidebar')
+     @include('personal.includes.sidebar')
      @yield('content')
 
     <footer class="main-footer">
 
         <strong>Blog</strong>
     </footer>
-
 </div>
 <!-- ./wrapper -->
 
@@ -101,7 +113,23 @@
 <script src="{{asset('dist/js/app.min.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+<script src="{{asset('summer/summernote.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
+<script>
+
+    $('#summernote').summernote({
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+            ]
+    });
+    $(".select2").select2();
+</script>
 </body>
 </html>

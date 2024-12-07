@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Main;
+namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 
 class IndexController extends Controller
 {
     public function index()
     {
-       return view('main.index');
+        $categories = Category::all();
+       return view('category.index', compact('categories'));
     }
 
 }
