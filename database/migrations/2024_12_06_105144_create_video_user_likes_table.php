@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('video_user_likes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('video_id');
-            $table->unsignedBigInteger('user_id');
-            $table->text('message');
+            $table->unsignedBigInteger('video_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->text('message')->nullable();
             $table->timestamps();
 
             $table->index('video_id', 'video_user_likes_video_idx');

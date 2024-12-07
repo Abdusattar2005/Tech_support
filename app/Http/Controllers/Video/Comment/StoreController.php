@@ -13,7 +13,7 @@ public function store(Video $video, StoreRequest $request){
     $data = $request->validated();
     $data['user_id'] = auth()->user()->id;
     $data['video_id'] = $video->id;
-    Comment::create($data);
+    Comment::firstOrCreate($data);
     return redirect()->route('main.show', $video->id);
 }
 }

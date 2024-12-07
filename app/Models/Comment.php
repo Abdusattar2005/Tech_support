@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
-    protected $table = 'video_user_likes';
+    protected $table = 'comments';
     protected $guarded = false;
 
     public function user(){

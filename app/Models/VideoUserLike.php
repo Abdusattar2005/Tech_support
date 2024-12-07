@@ -9,6 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class VideoUserLike extends Model
 {
     use HasFactory;
-    protected $table = 'comments';
+    protected $table = 'video_user_likes';
     protected $guarded = false;
 }

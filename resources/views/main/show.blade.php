@@ -44,7 +44,18 @@
                           </div>
                         <span class="text-muted float-right">{{$comment->dateAsCarbon->diffForHumans()}}</span>
                       </span>
-                    {{$comment->message}}
+
+                    <div class="d-flex justify-content-between">
+                        {{$comment->message}}
+                        <form action="{{route('video.like.store', $video->id)}}" method="post">
+                            @csrf
+                            <button type="submit" class="border-0 bg-transparent">
+                                @auth()
+                                    <i class="fa{{auth()->user()->comments->contains($comment->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
+                                @endauth
+                            </button>
+                        </form>
+                    </div>
                 </div>
                 @endforeach
             </section>
