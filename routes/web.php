@@ -13,11 +13,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Main'], function () {
-    Route::get('/', [IndexController::class, 'index'])->name('main.index');
+    Route::get('/', [VideooController::class, 'video'])->name('main.video');
 });
 
 Route::group(['namespace' => 'Video', 'prefix' => 'videos'], function () {
-    Route::get('/', [VideooController::class, 'video'])->name('main.video');
     Route::get('/{video}', [VideooController::class, 'show'])->name('main.show');
 
     Route::group(['namespace' => 'Comment', 'prefix' => '{video}/comments'], function () {
@@ -27,6 +26,10 @@ Route::group(['namespace' => 'Video', 'prefix' => 'videos'], function () {
     Route::group(['namespace' => 'Like', 'prefix' => '{video}/likes'], function () {
         Route::post('/', [\App\Http\Controllers\Video\Like\StoreController::class, 'store'])->name('video.like.store');
     });
+});
+
+Route::group(['namespace' => 'Menu', 'prefix' => 'menu'], function () {
+    Route::get('/', [IndexController::class, 'index'])->name('main.index');
 });
 
 Route::group(['namespace' => 'Category', 'prefix'=>'categories'], function () {

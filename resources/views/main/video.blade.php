@@ -59,13 +59,12 @@
                                     <spam{{$video->liked_users_count}}></spam>
                                     <button type="submit" class="border-0 bg-transparent">
                                             <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
-
                                     </button>
                                 </form>
                                 @endauth
                                 @guest()
                                     <div>
-                                        <span>{{$post->liked_users_count}}</span>
+                                        <span>{{$video->liked_users_count}}</span>
                                         <i class="far fa-heart"></i>
                                     </div>
 
