@@ -16,6 +16,7 @@
                             </video>
                         </div>
                     </div>
+                    <p class="mt-2">Просмотров: {{$video->views}}</p>
                     <div class="d-flex justify-content-between">
                         <p class="blog-post-category">{{$video->category->name}}</p>
                         <form action="{{route('video.like.store', $video->id)}}" method="post">
@@ -51,6 +52,7 @@
                                     Ваш браузер не поддерживает воспроизведение видео.
                                 </video>
                             </div>
+                            <p class="mt-2">Просмотров: {{$video->views}}</p>
                             <div class="d-flex justify-content-between">
                                 <p class="blog-post-category">{{$video->category->name}}</p>
                                 @auth()
@@ -91,6 +93,7 @@
                                 </video>
                                 <div class="media-body">
                                     <h6 class="post-title">{{$video->title}}</h6>
+                                    <p class="mt-2">Просмотров: {{$video->views}}</p>
                                 </div>
                             </a>
                         </li>
