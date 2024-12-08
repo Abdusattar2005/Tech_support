@@ -16,7 +16,15 @@
                 <a href="{{route('personal.liked.index')}}" class= "pages/widgets.html">
                     <i class="nav-icon fa fa-heart"></i>
                     <span>
-                        Понравившиеся посты
+                        Понравившиеся видео
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('personal.dislike.index')}}" class= "pages/widgets.html">
+                    <i class="nav-icon fa fa-thumbs-down"></i>
+                    <span>
+                        Не понравившиеся видео
                     </span>
                 </a>
             </li>

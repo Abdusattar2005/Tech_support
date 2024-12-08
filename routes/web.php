@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Personal\Comment\CommentController;
+use App\Http\Controllers\Personal\Dislike\DislikeController;
 use App\Http\Controllers\Personal\Like\LikeController;
 use App\Http\Controllers\Personal\PersonalController;
 use App\Http\Controllers\Video\Comment\StoreController;
@@ -23,6 +24,11 @@ Route::group(['namespace' => 'Video', 'prefix' => 'videos'], function () {
         Route::post('/', [StoreController::class, 'store'])->name('video.comment.store');
 
     });
+
+    Route::group(['namespace' => 'Dislike', 'prefix' => '{video}/dislikes'], function () {
+        Route::post('/', [\App\Http\Controllers\Video\Dislike\StoreController::class, 'store'])->name('video.dislike.store');
+    });
+
     Route::group(['namespace' => 'Like', 'prefix' => '{video}/likes'], function () {
         Route::post('/', [\App\Http\Controllers\Video\Like\StoreController::class, 'store'])->name('video.like.store');
     });
@@ -45,8 +51,12 @@ Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' =>
 
     Route::group(['namespace' => 'Like','prefix'=> 'like'], function () {
         Route::get('/', [LikeController::class, 'index'])->name('personal.liked.index');
-        Route::delete('/{post}', [LikeController::class, 'delete'])->name('personal.liked.delete');
+        Route::delete('/{personal}', [LikeController::class, 'delete'])->name('personal.liked.delete');
+    });
 
+    Route::group(['namespace' => 'Dislike','prefix'=> 'dislike'], function () {
+        Route::get('/', [DislikeController::class, 'index'])->name('personal.dislike.index');
+        Route::delete('/{personal}', [DislikeController::class, 'delete'])->name('personal.dislike.delete');
     });
 
     Route::group(['namespace' => 'Comment','prefix'=> 'comment'], function () {

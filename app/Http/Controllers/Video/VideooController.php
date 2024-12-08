@@ -23,6 +23,5 @@ class VideooController extends Controller
             ->where('id', '!=', $video->id)->get()->take(3);
         $video->increment('views');
         return view('main.show', compact( 'video','data', 'relatedVideos'));
-
     }
 }

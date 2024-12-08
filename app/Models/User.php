@@ -65,6 +65,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Video::class, 'video_user_likes', 'user_id', 'video_id');
     }
+    public function DisLikedVideos()
+    {
+        return $this->belongsToMany(Video::class, 'dislikes', 'user_id', 'video_id');
+    }
     public function comments()
     {
         return $this->hasMany(Comment::class , 'user_id', 'id');

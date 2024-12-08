@@ -16,16 +16,32 @@
                             </video>
                         </div>
                     </div>
+                    <p class="mt-2">Просмотров: {{$video->views}}</p>
                     <div class="d-flex justify-content-between">
                         <p class="blog-post-category">{{$video->category->name}}</p>
-                        <form action="{{route('video.like.store', $video->id)}}" method="post">
-                            @csrf
-                            <button type="submit" class="border-0 bg-transparent">
-                                @auth()
-                                        <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart"></i>
-                                @endauth
-                            </button>
-                        </form>
+                        <div class="d-flex justify-content-between">
+                            <form action="{{route('video.like.store', $video->id)}}" method="post">
+                                @csrf
+                                <button type="submit" class="border-0 bg-transparent">
+                                    <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-up" style="color: blue;"></i>
+                                </button>
+                            </form>
+                            <form action="{{route('video.dislike.store', $video->id)}}" method="post">
+                                @csrf
+                                <input type="hidden" name="dislike" value="1">
+                                <button type="submit" class="border-0 bg-transparent">
+                                    <i class="fa{{auth()->user()->DislikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-down" style="color: black;"></i>
+                                </button>
+                            </form>
+                            <form action="{{route('video.like.store', $video->id)}}" method="post">
+                                @csrf
+                                <button type="submit" class="border-0 bg-transparent">
+                                    @auth()
+                                        <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
+                                    @endauth
+                                </button>
+                            </form>
+                        </div>
                     </div>
                     <a href="{{route('main.show', $video->id)}}" class="blog-post-permalink">
                         <h6 class="blog-post-title">{{$video->title}}</h6>
