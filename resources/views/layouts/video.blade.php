@@ -31,7 +31,7 @@
                             <a class="dropdown-item" href="{{route('admin.main.index')}}">1 Выйти на админ</a>
                             <a class="dropdown-item" href="{{route('personal.main.index')}}">2 Выйти на адми 2</a>
                             <a class="dropdown-item" href="{{route('main.video')}}">3 Выйти на видео</a>
-                            <a class="dropdown-item" href="{{route('main.index')}}">4 Выйти на главную</a>
+                            <a class="dropdown-item" href="{{route('main.index')}}">4 Выйти на Едика</a>
                         </div>
                     </li>
                     <li class="nav-item">
