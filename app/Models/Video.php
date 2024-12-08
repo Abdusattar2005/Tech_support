@@ -14,6 +14,14 @@ class Video extends Model
     protected $table = 'videos';
     protected $guarded = false;
 
+    protected $fillable = [
+        'title',
+        'path',
+        'category_id',
+        'views',
+    ];
+
+
     protected $withCount= ['likedUsers'];
     public function category(){
         return $this->belongsTo(Category::class, 'category_id', 'id');

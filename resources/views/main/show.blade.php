@@ -9,6 +9,7 @@
                     <video class="center" width="970px" height="640px" controls>
                         <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
                     </video>
+                    <p class="mt-2">Просмотров: {{$video->views}}</p>
                 </div>
             </section>
             <section>
@@ -20,7 +21,6 @@
                             <spam{{$video->liked_users_count}}></spam>
                             <button type="submit" class="border-0 bg-transparent">
                                 <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
-
                             </button>
                         </form>
                     @endauth
@@ -67,9 +67,12 @@
                             <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
                                 <video class="center" width="270px" height="240px" controls>
                                     <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
-                                </video>                                <p class="post-category">{{$relatedVideo->category->name}}</p>
+                                </video>
+                                <p class="mt-2">Просмотров: {{$video->views}}</p>
+                                <p class="post-category">{{$relatedVideo->category->name}}</p>
                                 <a href="{{route('main.show', $relatedVideo->id)}}"><h5
-                                        class="post-title">{{$video->title}}</h5></a>
+                                        class="post-title">{{$video->title}}</h5>
+                                </a>
                             </div>
                         @endforeach
                     </div>
