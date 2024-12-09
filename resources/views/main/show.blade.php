@@ -9,18 +9,32 @@
                     <video class="center" width="970px" height="640px" controls>
                         <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
                     </video>
+                    <p class="mt-2">Просмотров: {{$video->views}}</p>
                 </div>
             </section>
             <section>
                 <div class="d-flex justify-content-between">
                     <p class="blog-post-category">{{$video->category->name}}</p>
-                    @auth()
+                        <div class="d-flex justify-content-between">
+                            <form action="{{route('video.like.store', $video->id)}}" method="post">
+                                @csrf
+                                <button type="submit" class="border-0 bg-transparent">
+                                    <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-up" style="color: blue;"></i>
+                                </button>
+                            </form>
+                            <form action="{{route('video.dislike.store', $video->id)}}" method="post">
+                                @csrf
+                                <input type="hidden" name="dislike" value="1">
+                                <button type="submit" class="border-0 bg-transparent">
+                                    <i class="fa{{auth()->user()->DislikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-down" style="color: black;"></i>
+                                </button>
+                            </form>
+                @auth()
                         <form action="{{route('video.like.store', $video->id)}}" method="post">
                             @csrf
                             <spam{{$video->liked_users_count}}></spam>
                             <button type="submit" class="border-0 bg-transparent">
                                 <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
-
                             </button>
                         </form>
                     @endauth
@@ -29,8 +43,8 @@
                             <span>{{$video->liked_users_count}}</span>
                             <i class="far fa-heart"></i>
                         </div>
-
                     @endguest
+                        </div>
                 </div>
             </section>
             <section class="comment-list mb-5">
@@ -67,9 +81,29 @@
                             <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
                                 <video class="center" width="270px" height="240px" controls>
                                     <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
-                                </video>                                <p class="post-category">{{$relatedVideo->category->name}}</p>
+                                </video>
+                                <div class="d-flex justify-content-between">
+                                    <p class="mt-2">Просмотров: {{$video->views}}</p>
+                                    @auth()
+                                        <form action="{{route('video.like.store', $video->id)}}" method="post">
+                                            @csrf
+                                            <spam{{$video->liked_users_count}}></spam>
+                                            <button type="submit" class="border-0 bg-transparent">
+                                                <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
+                                            </button>
+                                        </form>
+                                    @endauth
+                                    @guest()
+                                        <div>
+                                            <span>{{$video->liked_users_count}}</span>
+                                            <i class="far fa-heart"></i>
+                                        </div>
+                                    @endguest
+                                </div>
+                                <p class="post-category">{{$relatedVideo->category->name}}</p>
                                 <a href="{{route('main.show', $relatedVideo->id)}}"><h5
-                                        class="post-title">{{$video->title}}</h5></a>
+                                        class="post-title">{{$video->title}}</h5>
+                                </a>
                             </div>
                         @endforeach
                     </div>

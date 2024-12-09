@@ -21,7 +21,7 @@ class VideooController extends Controller
         $data = Carbon::parse($video->created_at);
         $relatedVideos = Video::where('category_id', $video->category_id)
             ->where('id', '!=', $video->id)->get()->take(3);
+        $video->increment('views');
         return view('main.show', compact( 'video','data', 'relatedVideos'));
-
     }
 }

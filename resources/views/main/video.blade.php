@@ -1,6 +1,5 @@
 @extends('layouts.video')
 @section('content')
-
 <main class="blog">
     <div class="container">
         <h1 class="edica-page-title" data-aos="fade-up">Video</h1>
@@ -16,8 +15,23 @@
                             </video>
                         </div>
                     </div>
+                    <p class="mt-2">Просмотров: {{$video->views}}</p>
                     <div class="d-flex justify-content-between">
                         <p class="blog-post-category">{{$video->category->name}}</p>
+                        <div class="d-flex justify-content-between">
+                            <form action="{{route('video.like.store', $video->id)}}" method="post">
+                                @csrf
+                                <button type="submit" class="border-0 bg-transparent">
+                                    <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-up" style="color: blue;"></i>
+                                </button>
+                            </form>
+                            <form action="{{route('video.dislike.store', $video->id)}}" method="post">
+                                @csrf
+                                <input type="hidden" name="dislike" value="1">
+                                <button type="submit" class="border-0 bg-transparent">
+                                    <i class="fa{{auth()->user()->DislikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-down" style="color: black;"></i>
+                                </button>
+                            </form>
                         <form action="{{route('video.like.store', $video->id)}}" method="post">
                             @csrf
                             <button type="submit" class="border-0 bg-transparent">
@@ -26,6 +40,7 @@
                                 @endauth
                             </button>
                         </form>
+                        </div>
                     </div>
                     <a href="{{route('main.show', $video->id)}}" class="blog-post-permalink">
                         <h6 class="blog-post-title">{{$video->title}}</h6>
@@ -51,24 +66,32 @@
                                     Ваш браузер не поддерживает воспроизведение видео.
                                 </video>
                             </div>
+                                <p class="mt-2">Просмотров: {{$video->views}}</p>
                             <div class="d-flex justify-content-between">
                                 <p class="blog-post-category">{{$video->category->name}}</p>
-                                @auth()
-                                <form action="{{route('video.like.store', $video->id)}}" method="post">
-                                    @csrf
-                                    <spam{{$video->liked_users_count}}></spam>
-                                    <button type="submit" class="border-0 bg-transparent">
-                                            <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
-                                    </button>
-                                </form>
-                                @endauth
-                                @guest()
-                                    <div>
-                                        <span>{{$video->liked_users_count}}</span>
-                                        <i class="far fa-heart"></i>
-                                    </div>
-
-                                @endguest
+                                <div class="d-flex justify-content-between">
+                                    <form action="{{route('video.like.store', $video->id)}}" method="post">
+                                        @csrf
+                                        <button type="submit" class="border-0 bg-transparent">
+                                            <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-up" style="color: blue;"></i>
+                                        </button>
+                                    </form>
+                                    <form action="{{route('video.dislike.store', $video->id)}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="dislike" value="1">
+                                        <button type="submit" class="border-0 bg-transparent">
+                                            <i class="fa{{auth()->user()->DislikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-down" style="color: black;"></i>
+                                        </button>
+                                    </form>
+                                    <form action="{{route('video.like.store', $video->id)}}" method="post">
+                                        @csrf
+                                        <button type="submit" class="border-0 bg-transparent">
+                                            @auth()
+                                                <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
+                                            @endauth
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                             <a href="{{route('main.show', $video->id)}}" class="blog-post-permalink">
                                 <h6 class="blog-post-title">{{$video->title}}</h6>
@@ -89,8 +112,34 @@
                                     <source src="{{ asset('storage/' . $video->path) }}" type="video/mp4">
                                     Ваш браузер не поддерживает воспроизведение видео.
                                 </video>
+                                <div class="d-flex justify-content-between">
                                 <div class="media-body">
                                     <h6 class="post-title">{{$video->title}}</h6>
+                                    <p class="mt-2">Просмотров: {{$video->views}}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <form action="{{route('video.like.store', $video->id)}}" method="post">
+                                            @csrf
+                                            <button type="submit" class="border-0 bg-transparent">
+                                                <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-up" style="color: blue;"></i>
+                                            </button>
+                                        </form>
+                                        <form action="{{route('video.dislike.store', $video->id)}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="dislike" value="1">
+                                            <button type="submit" class="border-0 bg-transparent">
+                                                <i class="fa{{auth()->user()->DislikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-down" style="color: black;"></i>
+                                            </button>
+                                        </form>
+                                        <form action="{{route('video.like.store', $video->id)}}" method="post">
+                                            @csrf
+                                            <button type="submit" class="border-0 bg-transparent">
+                                                @auth()
+                                                    <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
+                                                @endauth
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
                                 </div>
                             </a>
                         </li>
