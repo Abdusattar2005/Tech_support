@@ -49,9 +49,16 @@
         <nav class="navbar navbar-static-top">
             <!-- Sidebar toggle button-->
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"></a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <input class="btn btn-outline-primary" type="submit" value="Выйти">
+                    </form>
+                </li>
+            </ul>
         </nav>
     </header>
-    <!-- Left side column. contains the logo and sidebar -->
 
      @include('admin.includes.sidebar')
      @yield('content')
