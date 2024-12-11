@@ -14,6 +14,7 @@ class LikeController extends Controller
     }
     public function delete( Video $video )
     {
-        auth()->user()->likedVideos()->detach($video);
-        return redirect()->route('personal.liked.index');    }
+        auth()->user()->LikedVideos()->detach($video);
+        return redirect()->route('personal.liked.index');
+    }
 }

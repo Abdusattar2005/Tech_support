@@ -33,7 +33,7 @@
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>3</h3>
+                            <h3>{{$data['categoriesCount']}}</h3>
 
                             <p>Категории</p>
                         </div>
@@ -47,8 +47,7 @@
                     <!-- small box -->
                     <div class="small-box bg-blue">
                         <div class="inner">
-                            <h3>4</h3>
-                            {{--                        <sup style="font-size: 20px">%</sup>--}}
+                            <h3>{{$data['videosCount']}}</h3>
                             <p>Видео</p>
                         </div>
                         <div class="icon">

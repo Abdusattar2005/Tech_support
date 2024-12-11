@@ -61,9 +61,9 @@ Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' =>
 
     Route::group(['namespace' => 'Comment','prefix'=> 'comment'], function () {
         Route::get('/', [CommentController::class, 'index'])->name('personal.comment.index');
-        Route::get('/{comment}/edit', [CommentController::class, 'edit'])->name('admin2.comment.edit');
-        Route::patch('/{comment}', [CommentController::class, 'update'])->name('admin2.comment.update');
-        Route::delete('/{comment}', [CommentController::class, 'delete'])->name('admin2.comment.delete');
+        Route::get('/{comment}/edit', [CommentController::class, 'edit'])->name('personal.comment.edit');
+        Route::patch('/{comment}', [CommentController::class, 'update'])->name('personal.comment.update');
+        Route::delete('/{personal}', [CommentController::class, 'delete'])->name('personal.comment.delete');
 
     });
 });

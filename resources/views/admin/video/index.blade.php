@@ -47,7 +47,6 @@
                                             <form action="{{route('admin.video.delete', $video->id)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                {{--<i class="fas fa-trash"></i>--}}
                                                 <button type="submit" class="border-0 bg-transparent">
                                                     <i class="fa fa-trash  text-danger"  role="button"></i>
                                                 </button>
