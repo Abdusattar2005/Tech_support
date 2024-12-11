@@ -20,6 +20,7 @@
                     <div class="d-flex justify-content-between">
                         <p class="blog-post-category">{{$video->category->name}}</p>
                         <div class="d-flex justify-content-between">
+                            @auth()
                             <form action="{{route('video.like.store', $video->id)}}" method="post">
                                 @csrf
                                 <button type="submit" class="border-0 bg-transparent">
@@ -41,6 +42,7 @@
                                     @endauth
                                 </button>
                             </form>
+                            @endauth
                         </div>
                     </div>
                     <a href="{{route('main.show', $video->id)}}" class="blog-post-permalink">

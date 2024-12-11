@@ -14,6 +14,7 @@
             </section>
             <section>
                 <div class="d-flex justify-content-between">
+                    @auth()
                     <p class="blog-post-category">{{$video->category->name}}</p>
                         <div class="d-flex justify-content-between">
                             <form action="{{route('video.like.store', $video->id)}}" method="post">
@@ -45,6 +46,7 @@
                         </div>
                     @endguest
                         </div>
+                    @endauth
                 </div>
             </section>
             <section class="comment-list mb-5">

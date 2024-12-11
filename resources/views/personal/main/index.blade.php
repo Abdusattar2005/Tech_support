@@ -18,9 +18,9 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>10</h3>
+                        <h3>{{$data['likesCount']}}</h3>
 
-                        <p>Понравившиеся посты</p>
+                        <p>Понравившиеся видео</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-heart"></i>
@@ -33,8 +33,21 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>10</h3>
+                        <h3>{{$data['dislikesCount']}}</h3>
 {{--                        <sup style="font-size: 20px">%</sup>--}}
+                        <p>Не понравившиеся видео</p>
+                    </div>
+                    <div class="icon">
+                        <i class=" fa fa-comment "></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Подробнее<i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>{{$data['commentsCount']}}</h3>
                         <p>Коментарии</p>
                     </div>
                     <div class="icon">
