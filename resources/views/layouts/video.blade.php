@@ -13,6 +13,7 @@
 {{--    Font Awesome китепканасы--}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src={{asset("assets/vendors/jquery/jquery.min.js")}}></script>
     <script src={{asset("assets/js/loader.js")}}></script>
 </head>

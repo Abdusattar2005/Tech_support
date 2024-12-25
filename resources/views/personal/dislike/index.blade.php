@@ -22,7 +22,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Название</th>
-                                <th></th>
+                                <th>Количество</th>
                                 <th colspan="2" class="text-center">Дуйствия</th>
                             </tr>
                             </thead>
@@ -31,7 +31,10 @@
                                 <tr>
                                     <td>{{$video->id}}</td>
                                     <td>{{$video->title}}</td>
-                                    <td><i class="fa fa-thumbs-down" style="color: black;"></i></td>
+                                    <td>
+                                        <span>{{$video->disliked_users_count}}</span>
+                                        <i class="fa fa-thumbs-down" style="color: black;"></i>
+                                    </td>
                                     <td class="text-center"><a href="{{route('admin.video.show', $video->id)}}"><i class="fa fa-eye"></i></a></td>
                                     <td class="text-center">
                                         <form action="{{route('personal.dislike.delete', $video->id)}}" method="POST">

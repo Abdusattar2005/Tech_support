@@ -13,7 +13,8 @@ class VideooController extends Controller
         $videos = Video::paginate(6);
         $randomVideos = Video::get()->random(4);
         $LikedVideos = Video::withCount('LikedUsers')->orderBy('liked_users_count','DESC')->get()->take(4);
-        return view('main.video', compact('videos', 'randomVideos', 'LikedVideos'));
+        $DisLikedVideos = Video::withCount('DislikedUsers')->orderBy('disliked_users_count','DESC')->get()->take(4);
+        return view('main.video', compact('videos', 'randomVideos', 'LikedVideos','DisLikedVideos'));
     }
 
     public function show(Video $video)

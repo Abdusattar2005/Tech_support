@@ -19,16 +19,24 @@ class Video extends Model
         'path',
         'category_id',
         'views',
+        'views_date',
     ];
 
 
-    protected $withCount= ['likedUsers'];
+    protected $withCount= [
+        'likedUsers',
+        'dislikedUsers',
+    ];
+
     public function category(){
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     public function LikedUsers(){
         return $this->belongsToMany(User::class, 'video_user_likes', 'video_id', 'user_id');
+    }
+    public function DislikedUsers(){
+        return $this->belongsToMany(User::class, 'dislikes', 'video_id', 'user_id');
     }
 
     public function comments()

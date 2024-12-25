@@ -20,6 +20,7 @@
                             <form action="{{route('video.like.store', $video->id)}}" method="post">
                                 @csrf
                                 <button type="submit" class="border-0 bg-transparent">
+                                    <span>{{$video->liked_users_count}}</span>
                                     <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-up" style="color: blue;"></i>
                                 </button>
                             </form>
@@ -27,14 +28,15 @@
                                 @csrf
                                 <input type="hidden" name="dislike" value="1">
                                 <button type="submit" class="border-0 bg-transparent">
+                                    <span>{{$video->disliked_users_count}}</span>
                                     <i class="fa{{auth()->user()->DislikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-down" style="color: black;"></i>
                                 </button>
                             </form>
                 @auth()
                         <form action="{{route('video.like.store', $video->id)}}" method="post">
                             @csrf
-                            <spam{{$video->liked_users_count}}></spam>
                             <button type="submit" class="border-0 bg-transparent">
+                                <span>{{$video->liked_users_count}}</span>
                                 <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
                             </button>
                         </form>
@@ -67,7 +69,8 @@
                             @csrf
                             <button type="submit" class="border-0 bg-transparent">
                                 @auth()
-                                    <i class="fa{{auth()->user()->comments->contains($comment->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
+                                    <span>{{$video->liked_users_count}}</span>
+                                    <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
                                 @endauth
                             </button>
                         </form>
@@ -86,11 +89,27 @@
                                 </video>
                                 <div class="d-flex justify-content-between">
                                     <p class="mt-2">Просмотров: {{$video->views}}</p>
+                                    <div class="d-flex justify-content-between">
                                     @auth()
                                         <form action="{{route('video.like.store', $video->id)}}" method="post">
                                             @csrf
-                                            <spam{{$video->liked_users_count}}></spam>
                                             <button type="submit" class="border-0 bg-transparent">
+                                                <span>{{$video->liked_users_count}}</span>
+                                                <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-up" style="color: blue;"></i>
+                                            </button>
+                                        </form>
+                                        <form action="{{route('video.dislike.store', $video->id)}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="dislike" value="1">
+                                            <button type="submit" class="border-0 bg-transparent">
+                                                <span>{{$video->disliked_users_count}}</span>
+                                                <i class="fa{{auth()->user()->DislikedVideos->contains($video->id) ? 's' : 'r'}} fa-thumbs-down" style="color: black;"></i>
+                                            </button>
+                                        </form>
+                                        <form action="{{route('video.like.store', $video->id)}}" method="post">
+                                            @csrf
+                                            <button type="submit" class="border-0 bg-transparent">
+                                                <span>{{$video->liked_users_count}}</span>
                                                 <i class="fa{{auth()->user()->LikedVideos->contains($video->id) ? 's' : 'r'}} fa-heart" style="color: red;"></i>
                                             </button>
                                         </form>
@@ -101,6 +120,7 @@
                                             <i class="far fa-heart"></i>
                                         </div>
                                     @endguest
+                                    </div>
                                 </div>
                                 <p class="post-category">{{$relatedVideo->category->name}}</p>
                                 <a href="{{route('main.show', $relatedVideo->id)}}"><h5

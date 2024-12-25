@@ -16,7 +16,7 @@
                         <tr>
                             <td>{{ $index + 1 }}</td>
                             <td>
-                                <a href="{{ route('category.post.index', $category->id) }}">{{ $category->name }}</a>
+                                <a href="{{ route('category.main.index', $category->id) }}">{{ $category->name }}</a>
                             </td>
                         </tr>
                     @endforeach

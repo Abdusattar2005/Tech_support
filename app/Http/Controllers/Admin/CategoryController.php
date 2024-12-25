@@ -48,8 +48,10 @@ class CategoryController extends Controller
     }
     public function delete( Category $category)
     {
+//        $category = Category::withTrashed()->find(6)->restore();
         $category->delete();
-        return redirect()->route('admin.category.index');
+//        dd('$category');
+        return redirect()->route('admin.category.index', compact('category'));
     }
 
 }

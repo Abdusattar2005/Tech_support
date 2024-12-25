@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('video_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->text('message')->nullable();
+            $table->date('likes_date')->nullable();
             $table->timestamps();
 
             $table->index('video_id', 'video_user_likes_video_idx');
