@@ -16,11 +16,3 @@ class IndexController extends Controller
 
 }
 
-
-
-
-
-
-//        $relatedVideos = Video::where('category_id', $video->category_id)
-//            ->where('id', '!=', $video->id)->get()->take(3);
-//        compact('video', 'data', 'relatedVideos')

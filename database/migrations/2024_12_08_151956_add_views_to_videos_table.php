@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('videos', function (Blueprint $table) {
             $table->unsignedInteger('views')->default(0);
+            $table->date('views_date')->nullable();
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('videos', function (Blueprint $table) {
             $table->dropColumn('views');
+            $table->dropColumn('views_date');
         });
     }
 };
