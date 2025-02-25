@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./:/var/www/
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+
+    ports:
+      - "8826:80"
+
+#    depends_on:
+#      - php
+#  php:
+#    image: php:8.0-fpm
+#    volumes:
+#      - ./:/var/www
+
+#    environment:
+#      - NGINX_HOST=foobar.com
+#      - NGINX_PORT=80
