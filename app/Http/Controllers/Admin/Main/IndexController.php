@@ -14,3 +14,4 @@ class IndexController extends Controller
         return view('admin.main.index', compact('data'));
     }
 }
+
