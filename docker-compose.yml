@@ -15,6 +15,7 @@ services:
         networks:
             - laravel_network
 
+
     webserver:
         image: nginx:alpine
         container_name: laravel_nginx
