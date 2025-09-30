@@ -14,6 +14,7 @@ public function store(Video $video, StoreRequest $request){
     $data['user_id'] = auth()->user()->id;
     $data['video_id'] = $video->id;
     Comment::firstOrCreate($data);
+    //   Comment::firstOrCreate($data);
     return redirect()->route('main.show', $video->id);
 }
 
