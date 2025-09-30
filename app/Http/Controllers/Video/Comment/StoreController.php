@@ -16,4 +16,7 @@ public function store(Video $video, StoreRequest $request){
     Comment::firstOrCreate($data);
     return redirect()->route('main.show', $video->id);
 }
+
+
+
 }
