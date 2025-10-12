@@ -17,7 +17,6 @@ class IndexController extends Controller
         $data['categoriesCount']=Category::all()->count();
         return view('admin.main.index', compact('data'));
     }
-    "Hello" "Привет"
 }
 
 
