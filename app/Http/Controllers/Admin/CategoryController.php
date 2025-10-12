@@ -14,7 +14,7 @@ class CategoryController extends Controller
         $categories = Category::all();
         return view('admin.category.index', compact('categories'));
     }
-    
+
 
     public function create()
     {
@@ -51,7 +51,6 @@ class CategoryController extends Controller
     {
 //        $category = Category::withTrashed()->find(6)->restore();
         $category->delete();
-//        dd('$category');
         return redirect()->route('admin.category.index', compact('category'));
     }
 
