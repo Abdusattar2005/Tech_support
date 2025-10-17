@@ -71,7 +71,6 @@ Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' =>
         Route::get('/{comment}/edit', [CommentController::class, 'edit'])->name('personal.comment.edit');
         Route::patch('/{comment}', [CommentController::class, 'update'])->name('personal.comment.update');
         Route::delete('/{personal}', [CommentController::class, 'delete'])->name('personal.comment.delete');
-
     });
 });
 
